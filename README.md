@@ -36,7 +36,7 @@ prosli nahravacim studiem s obsluhou nejprve dohledali svou nahravku a pote
 ji mohli formou kratkeho filmu shlednout na obrazovce televize, spolecne
 s odbornym vykladem popisujicim osobu na obraze.
 
-![Administrace projekce](docs/administrace.jpg "Administrace projekce")
+![Administrace projekce](docs/administrace.png "Administrace projekce")
 
 Po 21 hodine jsme se pak presunuli ven do dalsiho party stanu (tentokrat 
 3x3m) a pokracovali v projekci na stenu domu.
