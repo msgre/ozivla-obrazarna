@@ -70,7 +70,7 @@ funkci:
   titulkama)
 
 Serverova cast obrazarny je k nalezeni v adresari
-[`obrazarna-server`](./obrazarna-server/`).
+[`obrazarna-server`](./obrazarna-server/).
 
 Posledni komponentou byl notebook pripojeny k televizi (a posleze projektoru),
 pricemz na obrazovce notebooku byla ve webovem prohlizeci administratorska
