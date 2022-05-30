@@ -1,0 +1,9 @@
+Django==4.0.4
+django-extensions==3.1.5
+Pillow==9.1.0
+ipython==8.2.0
+pytest==7.1.1
+djangorestframework==3.13.1
+django-rq==2.5.1
+psycopg2==2.9.3
+django-bootstrap-v5==1.0.11

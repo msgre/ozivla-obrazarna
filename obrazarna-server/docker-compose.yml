@@ -1,0 +1,57 @@
+---
+services:
+  oapp:
+    container_name: oapp
+    image: msgre/obrazarna:latest
+    build: .
+    volumes:
+      - $PWD:/app
+      - uploads:/uploads
+    environment:
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    stop_signal: SIGINT
+    working_dir: /app
+    command: ./manage.py runserver oapp:9000
+    links:
+      - oredis
+      - odb
+    depends_on:
+      - oredis
+      - odb
+
+  oredis:
+    container_name: oredis
+    image: redis:6.2.6
+
+  odb:
+    container_name: odb
+    image: postgres:14.2
+    environment:
+      POSTGRES_PASSWORD: pw
+      POSTGRES_USER: obrazarna
+      POSTGRES_DB: obrazarna
+
+  oworker:
+    container_name: oworker
+    image: msgre/obrazarna:latest
+    build: .
+    volumes:
+      - $PWD:/app
+      - uploads:/uploads
+    environment:
+      PYTHONUNBUFFERED: 1
+    stop_signal: SIGINT
+    working_dir: /app
+    command: ./manage.py rqworker
+    links:
+      - oredis
+      - odb
+    depends_on:
+      - oredis
+      - odb
+
+volumes:
+  uploads:

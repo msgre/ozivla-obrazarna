@@ -1,0 +1,43 @@
+<div class="col">
+    <div class="card">
+        {# obrazek #}
+        <div class="card-img-top" style="background-image: url('{{ performance.picture.file.url }}');"></div>
+
+        <div class="card-body">
+            {# nazev, autor #}
+            <h5 class="card-title">{{ performance.picture.title }}</h5>
+            <p>{{ performance.picture.author }}</p>
+
+            {# poznamky #}
+            <p><a data-bs-toggle="collapse" href="#notes-{{ performance.id }}">Poznámky</a></p>
+            <div class="card-text collapse" id="notes-{{ performance.id }}">
+                <hr>
+                <p class="small">{{ performance.picture.year }}, {{ performance.picture.technique }}<br>
+                {{ performance.picture.collection }}</p>
+                <hr>
+                <p>{{ performance.picture.notes }}</p>
+                <hr>
+            </div>
+
+            {# akce #}
+            <div class="row">
+                <div class="col">
+                    <p class="small">
+                        {% if played %}
+                            <time class="timeago" datetime="{{ performance.demonstrated_date|date:"c" }}">{{ performance.demonstrated_date|date }}</time>
+                        {% else %}
+                            <time class="timeago" datetime="{{ performance.created|date:"c" }}">{{ performance.created|date }}</time>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col text-end">
+                    {% if play %}
+                        <a data-performance-id="{{ performance.id }}" href="#" class="control btn btn-primary">Promítnout</a>
+                    {% elif remove %}
+                        <a data-performance-id="{{ performance.id }}" href="#" class="control btn btn-danger">Odstranit</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,171 @@
+{% load bootstrap5 static %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Oživlá obrazárna</title>
+        {% bootstrap_css %}
+<style>
+    div.card-img-top {
+        height:300px;
+        background-position: center;
+        background-repeat: no-repeat;
+        /*background-size: contain;*/
+        background-size: cover;
+    }
+</style>
+    </head>
+    <body>
+
+        <div class="container my-5">
+            <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+                <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+                    <h1 class="display-4 fw-bold lh-1">Oživlá obrazárna</h1>
+                    {% if upcomming.selected|length > 0 %}
+                        <p class="lead">
+                            Právě se promítá <b class="fw-bold">{{ upcomming.selected.0.picture.title }}</b> od {{ upcomming.selected.0.picture.author }}.
+                        </p>
+                            {% if upcomming.selected|length > 1 %}
+                                <p class="lead">A hned poté bude následovat 
+                                {% for p in upcomming.selected|slice:"1:" %}
+                                    <b class="fst-italic">{{ p.picture.title }}</b>{% if forloop.last %}.{% else %}, {% endif %}
+                                {% endfor %}
+                                </p>
+                            {% endif %}
+                    {% else %}
+                        <p class="lead">Doposud se promítlo {{ count }} obrazů.</p>
+                    {% endif %}
+                    <br>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                        <button id="reload-btn" type="button" class="btn btn-outline-secondary btn-lg px-4 me-md-2 fw-bold">
+                            Přehled je aktuální
+                        </button>
+                    </div>
+                </div>
+                {% if upcomming.selected|length > 0 %}
+                    <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden text-end">
+                        {#<img class="rounded-lg-3" src="https://getbootstrap.com/docs/5.2/examples/heroes/bootstrap-docs.png" alt="" width="720">#}
+                        <img class="rounded-lg-3" src="{{ upcomming.selected.0.picture.file.url }}" width="50%">
+                  </div>
+                {% endif %}
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="row row-cols-1 ">
+                <div class="col g-3">
+                    <h3>Připraveno k projekci</h3>
+                    <br>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                {% if upcomming.ready|length > 0 %}
+                    {% for performance in upcomming.ready %}
+                        {% include "box.html" with remove=False play=True %}
+                    {% endfor %}
+                {% else %}
+                    <div class="col">
+                        <p>Momentálně není žádný obraz připraven k projekci...</p>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="row row-cols-1">
+                <div class="col g-3">
+                    <br>
+                    <h3>Nedávno promítnuté</h3>
+                    <br>
+                </div>
+            </div>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-4 opacity-50">
+                {% if upcomming.recent|length > 0 %}
+                    {% for performance in upcomming.recent %}
+                        {% include "box.html" with remove=False play=True played=True %}
+                    {% endfor %}
+                {% else %}
+                    <div class="col">
+                        <p>Zatím se ještě nic nepromítalo...</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+    <script src="{% static 'jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'jquery.timeago.js' %}"></script>
+    {% bootstrap_javascript %}
+    <script>
+        var csrftoken, reload_btn, intervalID, now=Date.now();
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        $(document).ready(function(){
+            function f(n, d, a) {
+                return a[d>=0 ? 0 : a.length===2 || n<5 ? 1 : 2];
+            }
+            jQuery.timeago.settings.strings = {
+                prefixAgo:     'před',
+                prefixFromNow: 'za',
+                suffixAgo:     null,
+                suffixFromNow: null,
+                seconds: function(n, d) {return f(n, d, ['méně než minutou', 'méně než minutu']);},
+                minute:  function(n, d) {return f(n, d, ['minutou', 'minutu']);},
+                minutes: function(n, d) {return f(n, d, ['%d minutami', '%d minuty', '%d minut']);},
+                hour:    function(n, d) {return f(n, d, ['hodinou', 'hodinu']);},
+                hours:   function(n, d) {return f(n, d, ['%d hodinami', '%d hodiny', '%d hodin']);},
+                day:     function(n, d) {return f(n, d, ['%d dnem', '%d den']);},
+                days:    function(n, d) {return f(n, d, ['%d dny', '%d dny', '%d dní']);},
+                month:   function(n, d) {return f(n, d, ['%d měsícem', '%d měsíc']);},
+                months:  function(n, d) {return f(n, d, ['%d měsíci', '%d měsíce', '%d měsíců']);},
+                year:    function(n, d) {return f(n, d, ['%d rokem', '%d rok']);},
+                years:   function(n, d) {return f(n, d, ['%d lety', '%d roky', '%d let']);}
+            };
+            jQuery("time.timeago").timeago();
+            csrftoken = getCookie('csrftoken');
+
+            function select_picture(){
+                var el = $(this),
+                performance_id = el.data('performance-id');
+                fetch('/api/performance/' + performance_id + '/select/', {method: 'POST', headers:{'X-CSRFToken': csrftoken}}).then(function (response) {location.reload()});
+                return false;
+            }
+            $('a.control').click(select_picture);
+
+            reload_btn=$('#reload-btn');
+
+            function check(){
+                fetch('/api/performance/check/?now=' + now, {headers:{'X-CSRFToken': csrftoken}}).then(function (response) {
+                    return response.json();
+                }).then(function(data){
+                    if (!data.actual) {
+                        clearInterval(intervalID);
+                        reload_btn.text('Aktualizovat přehled');
+                        reload_btn.removeClass('btn-outline-secondary');
+                        reload_btn.addClass('btn-warning');
+                    }
+                });
+            }
+            intervalID = setInterval(check, 3000);
+
+            reload_btn.click(function(){
+                location.reload();
+                return false;
+            });
+        });
+    </script>
+</html>

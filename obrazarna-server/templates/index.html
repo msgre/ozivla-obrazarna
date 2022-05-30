@@ -1,0 +1,177 @@
+{% load static %}
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title>Oživlá obrazárna</title>
+        <link rel="stylesheet" href="{% static 'reveal/reset.css' %}">
+		<link rel="stylesheet" href="{% static 'reveal/reveal.css' %}">
+		<link rel="stylesheet" href="{% static 'reveal/black.css' %}">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section data-background-video="{% static 'static/kuzel.mp4' %}" data-background-video-loop data-background-video-muted>
+                </section>
+                <section data-autoslide="1600"></section>
+
+                <section data-autoslide="3000" data-background-image="{% static 'static/plakat_1280.png' %}"></section>
+                <section data-autoslide="1600"></section>
+
+                <section data-autoslide="1600">
+                    <p class="fragment">Vrtule &ndash; svět her a poznání</p>
+                    <p class="fragment" style="position:relative; top:15px;"><small>&amp;</small></p>
+                    <p class="fragment">Muzeum regionu Valašsko</p>
+                </section>
+                <section data-autoslide="1600"></section>
+
+                <section data-autoslide="2000">
+                    <p>uvádí</p>
+                </section>
+                <section data-autoslide="1600"></section>
+
+                <section data-autoslide="5000" data-background-image="{% static 'static/obrazy_pozadi.png' %}">
+                    <h1 style="text-shadow: 0px 0px 10px #000; text-transform:none">Oživlá obrazárna</h1>
+                </section>
+                <section data-autoslide="3000"></section>
+
+                <section data-autoslide="5000">
+                    <p><small id="tmpl-autor">Jan František Klein</small></p>
+                    <h2 id="tmpl-nazev">Maria Barbara hraběnka Choryňská</h2>
+                    <p style="position:relative; top:20px">
+                        <small id="tmpl-technika">1768, olej na plátně</small><br>
+                        <small id="tmpl-lokace">Sbírka Muzea regionu Valašsko, zámek Lešná</small>
+                    </p>
+                </section>
+                <section data-autoslide="1600"></section>
+                
+                <section id="tmpl-obraz" data-autoslide="7000" data-transition="none" data-background-video="{% static 'static/kuzel.mp4' %}" data-background-video-muted>
+                </section>
+                <section data-autoslide="3000"></section>
+
+                <section data-autoslide="2600" data-background-video="{% static 'static/mrk.mp4' %}" data-background-video-muted data-background-video-loop>
+                </section>
+
+                <section data-autoslide="5000"> </section>
+            </div>
+		</div>
+
+        <script src="{% static 'reveal/reveal.js' %}"></script>
+		<script>
+            // custom fce pro obrazarnu
+            var audio = new Audio(),
+                tmpl_autor,
+                tmpl_nazev,
+                tmpl_technika,
+                tmpl_lokace,
+                tmpl_video,
+                tmpl_picture,
+		csrftoken,
+        last_played_id;
+
+            function init_overlay(){
+                var videos = document.querySelectorAll('div > video');
+                tmpl_video = videos[1];
+
+                tmpl_picture = document.createElement('div');
+                tmpl_picture.setAttribute("class", "slide-background-content");
+            
+                tmpl_video.parentNode.insertBefore(tmpl_picture, tmpl_video);
+            }
+
+            function found_elements(){
+                tmpl_autor = document.querySelector('#tmpl-autor');
+                tmpl_nazev = document.querySelector('#tmpl-nazev');
+                tmpl_technika = document.querySelector('#tmpl-technika');
+                tmpl_lokace = document.querySelector('#tmpl-lokace');
+            }
+
+            function update_slides(performance) {
+                // titulky pred obrazek
+                tmpl_autor.innerText = performance.picture.author;
+                tmpl_nazev.innerText = performance.picture.title;
+                tmpl_technika.innerText = performance.picture.year + ', ' + performance.picture.technique;
+                tmpl_lokace.innerText = performance.picture.collection;
+                // overlay vrstva a video
+                tmpl_picture.setAttribute("style", "z-index:100; background-image: url(" + performance.picture.mask + ");");
+                tmpl_video.setAttribute("currentSrc", performance.processed_footage);
+                tmpl_video.querySelector('source').setAttribute("src", performance.processed_footage);
+                tmpl_video.load()
+                // hudba
+                audio.src = performance.accompaniment.file;
+            }
+            
+            // inicializace reveal.js
+			Reveal.initialize({
+                transition: 'fade',
+                controls: false,
+                progress: false,
+				hash: true,
+                transitionSpeed: 'slow',
+                viewDistance: 20,
+                loop: true,
+                autoSlideStoppable: false
+			});
+            Reveal.on('ready', event => {
+                init_overlay();
+                found_elements();
+            });
+            Reveal.on('slidechanged', event => {
+                if (event.indexh == 0) {
+                    timeout = setTimeout(check_performance, timeout_delay*3);
+                }
+                else if (event.indexh == 8) {
+                    audio.play();
+                }
+                else if (event.indexh == 13) {
+                    fetch('/api/performance/' + last_played_id + '/played/', {method: 'POST', headers:{'X-CSRFToken': csrftoken}});
+                }
+            });
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+csrftoken = getCookie('csrftoken');
+
+
+            var timeout,
+                timeout_delay = 1000;
+
+            function check_performance(){
+                fetch('/api/performance/upcomming/').then(function (response) {
+                    return response.json();
+                }).then(function (data) {
+                    if (data.selected.length > 0) {
+                        var upcomming = data.selected[0];
+                        console.info('New performance found', upcomming);
+                        update_slides(upcomming);
+                        last_played_id = upcomming.id;
+			Reveal.right();
+                    }
+                    else {
+                        console.info('No new performance found');
+                        timeout = setTimeout(check_performance, timeout_delay);
+                    }
+                }).catch(function (err) {
+                    console.warn('Something went wrong.', err);
+                });
+            }
+
+            timeout = setTimeout(check_performance, timeout_delay);
+
+		</script>
+	</body>
+</html>
