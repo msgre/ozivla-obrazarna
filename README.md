@@ -16,7 +16,7 @@ historickych postav.
 
 Vysledne video se pak s patricnou pompou promitalo na stenu Vrtule.
 
-[![Sestrih z akce Ozivla obrazarna](http://img.youtube.com/vi/XVNL_YfK9EI/0.jpg)](http://www.youtube.com/watch?v=XVNL_YfK9EI)
+[![Sestrih z akce Ozivla obrazarna](http://img.youtube.com/vi/Cwx61K6iBok/0.jpg)](http://www.youtube.com/watch?v=Cwx61K6iBok)
 
 # Prubeh akce
 
@@ -32,9 +32,9 @@ k dalsimu zpracovani.
 
 Projekce probihala nejprve uvnitr Vrtule, protoze Meziricka muzejni noc
 zacinala v 19 hodin a venku bylo na projektor jeste moc svetla. Lidi, kteri
-prosli nahravacim studiem s obsluhou nejprve dohledali svou nahravku a pote
-ji mohli formou kratkeho filmu shlednout na obrazovce televize, spolecne
-s odbornym vykladem popisujicim osobu na obraze.
+prosli nahravacim studiem nejprve s pomoci obsluhy dohledali svou nahravku a
+pote ji ve forme kratkeho filmu shledli na obrazovce televize (spolecne s
+odbornym vykladem).
 
 ![Administrace projekce](docs/administrace.png "Administrace projekce")
 
@@ -63,8 +63,8 @@ funkci:
 * obsahovala databazi obrazu z obrazarny, hudebnich podkresu, a zaznamy
   jednotlivych vystupu (nahravek ze studia)
 * nad vsemi daty poskytovala RESTove API rozhrani
-* generovala jednoduche administrativni rozhrani pro obsluhu projekce,
-  ve ktere spolecne s lidmi nasli zaznam a nasledne poslali do promitacky
+* generovala jednoduche administrativni rozhrani s vypisem nahravek ze studia,
+  ze ktereho se nasledne posilala videa do projektoru
 * generovala prezentaci v upravenem frameworku
   [reveal.js](https://revealjs.com/) (ktery pak vypadal jako kratky film s
   titulkama)
@@ -93,10 +93,10 @@ Autorem software je Michal Valousek.
 
 Data jsou k nalezi v adresari [`data`](./data/).
 
-**Upozorneni:** obrazovy a zvukovy material byl vytvoren vyhradne pro akci
+**Upozorneni: obrazovy a zvukovy material byl vytvoren vyhradne pro akci
 Meziricska muzejni noc 2022 a jeho prepouziti je mozne pouze s vyhradnim
 svolenim autoru (Muzea regionu Valassko v pripade fotografii a textu k obrazum,
 Andrei Tomecku a Ladi Krajci v pripade hudebnich doprovodu). Se softwarem si
-muzete delat co chcete.
+muzete delat co chcete.**
 
 Priprava celeho projektu zabrala zhruba mesic (po vecerech).
