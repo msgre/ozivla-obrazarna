@@ -181,3 +181,29 @@ class Performance(TimeStampedModel):
         os.remove(path)
 
         return True
+
+    def merge_footage(self, output_dir):
+        """
+        Spoji original nahravku s PNG obrazkem a vytvori finalni video, ktere ulozi do
+        zadaneho adresare jako soubor "{performance.id}.mp4".
+        """
+        if not os.path.exists(output_dir) or not os.path.isdir(output_dir):
+            logger.error('Vystupni adresar %s neexistuje', output_dir)
+            return False, None, None, None
+
+        path = os.path.join(output_dir, f'{self.id:03d}.mp4')
+
+        cmd = ['ffmpeg', '-i', self.processed_footage.path, '-i', self.picture.mask.path, '-filter_complex', '[0:v][1:v] overlay=0:0', '-pix_fmt', 'yuv420p', path]
+        completed = subprocess.run(cmd, capture_output=True)
+        processed_returncode = completed.returncode
+        processed_stdout = completed.stdout.decode('utf-8')
+        processed_stderr = completed.stderr.decode('utf-8')
+
+        try:
+            completed.check_returncode()
+        except subprocess.CalledProcessError:
+            # cosik se pokazilo
+            logger.error('Mergovani souboru %s ze zaznamu Performance.id=%s selhalo', self.processed_footage.path, self.id)
+            return False, processed_returncode, processed_stdout, processed_stderr
+
+        return True, processed_returncode, processed_stdout, processed_stderr
