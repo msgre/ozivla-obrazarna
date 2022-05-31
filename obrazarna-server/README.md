@@ -455,11 +455,12 @@ Tipy na vylepseni:
 Pro prezentaci vyslednych nahravek jsme vyuzili projekt
 [reveal.js](https://revealjs.com/).
 
+![Projekce vysledneho klipu na stenu](../docs/projekce.jpg "Projekce vysledneho klipu na stenu")
+
 Jde o software bezne pouzivanych pro vytvareni prezentaci ve webovych prohlizecich.
 
-Duvodem jeho vyuziti bylo hlavne to, ze posledni roky se venuju prevazne vyvoji
-backendovych aplikaci a svet FE mi uz davno ujel (tj. realizovat vlastnimi silami
-HTML/CSS animace bylo nad moje sily).
+Duvodem jeho vyuziti bylo hlavne to, ze mi ve FE vyvoji davno ujel vlak a 
+realizovat vlastni reseni zalozene na HTML/CSS animacich bylo nad moje sily.
 
 Reveal.js ale umel vse co jsem potreboval:
 
@@ -467,7 +468,7 @@ Reveal.js ale umel vse co jsem potreboval:
   v Django sablonach)
 * forma vysledneho "filmu" sla az do posledni chvile levne upravovat
   (kdybychom napriklad generovali vystup jako video, spatne by se nam zpetne
-  meninly titulky, stopaz, apod)
+  menily titulky, stopaz, apod)
 * transition efekty jsme vyuzili u titulku
 * dokazali jsme na sebe napasovat masku s obrazem a video nahravku (RPi dodava
   nahravky bez overlay vrstvy s obrazem, tj. je nutne provest jeste postprocessing)
@@ -483,7 +484,7 @@ jakem rozliseni bude projekce probihat (Chrome vyhralo). Prijemnym prekvapenim
 byla i podpora prohlizecu pri prehravani medii (video, mp3); uz neni treba
 zadnych pluginu a Javascriptovych knihoven, vse jiz nativne prohlizece podporuji.
 
-Poznamka: projekce by sla samozrejme vyresit i jinymi zpusoby, napr. zprocesovat
+Poznamka: projekce by sla vyresit i jinymi zpusoby, napr. zprocesovat
 nahravku tak, aby obsahovala vse potrebne (uvodni titulky, hudbu ve spravnou chvili,
 overlay vrstvu nad videem, atd). Problem byl ale v tom, ze jsme formu projekce
 ladili do posledni chvile a jeji upravy provadene v HTML sablone byly jednoduche.

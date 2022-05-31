@@ -26,8 +26,8 @@ Pro lepsi predstavu jeste kratke video:
 
 Nahravani a projekce probihaly na dvou ruznych mistech.
 
-Nahravaci studio jsme umistili ven do party stanu s pudrysem 3x6 metru. Uvnitr
-byla velkoplosna televize, kamera a lampy. Pro kazdeho navstevnika pocitac
+Nahravaci studio jsme umistili ven do party stanu s pudorysem 3x6 metru. Uvnitr
+byla televize, kamera a lampy. Pro kazdeho navstevnika pocitac
 nahodne vybral jeden z obrazu, promitl ho na televizi a pockal, az se "herci"
 spravne napozicuji a pripravi. Pote nasnimal 7 vterin zaznamu a odeslal jej
 k dalsimu zpracovani.
@@ -37,9 +37,11 @@ k dalsimu zpracovani.
 
 Projekce probihala nejprve uvnitr Vrtule, protoze Meziricka muzejni noc
 zacinala v 19 hodin a venku bylo na projektor jeste moc svetla. Lidi, kteri
-prosli nahravacim studiem nejprve s pomoci obsluhy dohledali svou nahravku a
+prosli nahravacim studiem s pomoci obsluhy dohledali svou nahravku a
 pote ji ve forme kratkeho filmu shledli na obrazovce televize (spolecne s
 odbornym vykladem).
+
+Ukazka administrace nahravek:
 
 ![Administrace projekce](docs/administrace.png "Administrace projekce")
 
@@ -104,4 +106,4 @@ svolenim autoru (Muzea regionu Valassko v pripade fotografii a textu k obrazum,
 Andrei Tomecku a Ladi Krajci v pripade hudebnich doprovodu). Se softwarem si
 muzete delat co chcete.**
 
-Priprava celeho projektu zabrala zhruba mesic (po vecerech).
+Priprava celeho projektu zabrala zhruba mesic.
