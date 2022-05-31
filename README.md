@@ -16,6 +16,10 @@ historickych postav.
 
 Vysledne video se pak s patricnou pompou promitalo na stenu Vrtule.
 
+![Projekce vysledneho klipu na stenu](docs/projekce.jpg "Projekce vysledneho klipu na stenu")
+
+Pro lepsi predstavu jeste kratke video:
+
 [![Sestrih z akce Ozivla obrazarna](http://img.youtube.com/vi/Cwx61K6iBok/0.jpg)](http://www.youtube.com/watch?v=Cwx61K6iBok)
 
 # Prubeh akce
@@ -28,7 +32,8 @@ nahodne vybral jeden z obrazu, promitl ho na televizi a pockal, az se "herci"
 spravne napozicuji a pripravi. Pote nasnimal 7 vterin zaznamu a odeslal jej
 k dalsimu zpracovani.
 
-![Nahravaci studio](docs/nahravaci_studio.jpg "Nahravaci studio")
+![Nahravaci studio 1](docs/nahravaci_studio_1.jpg "Nahravaci studio 1")
+![Nahravaci studio 2](docs/nahravaci_studio_2.jpg "Nahravaci studio 2")
 
 Projekce probihala nejprve uvnitr Vrtule, protoze Meziricka muzejni noc
 zacinala v 19 hodin a venku bylo na projektor jeste moc svetla. Lidi, kteri
