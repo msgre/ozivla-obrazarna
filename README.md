@@ -32,8 +32,7 @@ nahodne vybral jeden z obrazu, promitl ho na televizi a pockal, az se "herci"
 spravne napozicuji a pripravi. Pote nasnimal 7 vterin zaznamu a odeslal jej
 k dalsimu zpracovani.
 
-![Nahravaci studio 1](docs/nahravaci_studio_1.jpg "Nahravaci studio 1")
-![Nahravaci studio 2](docs/nahravaci_studio_2.jpg "Nahravaci studio 2")
+![Nahravaci studio](docs/nahravaci_studio_1.jpg "Nahravaci studio")
 
 Projekce probihala nejprve uvnitr Vrtule, protoze Meziricka muzejni noc
 zacinala v 19 hodin a venku bylo na projektor jeste moc svetla. Lidi, kteri
@@ -106,4 +105,39 @@ svolenim autoru (Muzea regionu Valassko v pripade fotografii a textu k obrazum,
 Andrei Tomecku a Ladi Krajci v pripade hudebnich doprovodu). Se softwarem si
 muzete delat co chcete.**
 
-Priprava celeho projektu zabrala zhruba mesic.
+# Poznamky
+
+* Priprava celeho projektu zabrala zhruba mesic (po vecerech)
+* Puvodne jsme pocitali s tim, ze s celou akci zacnem az po 21 hodine, kdy
+  uz bude venku dostatecna tma na projekci. Na posledni chvili jsme ale
+  zmenili plany, protoze nam prislo skoda, ze lidi kteri budou chodit uz od
+  19 hodin (hlavne rodiny s detma) by o celou taskarici prisli. Proto
+  jsme v prvni polovine akce promitali vysledne klipy na TV.
+* Promitani na TV melo i dalsi vyhodu -- probihalo v mensim prostoru (horni
+  vstup do Vrtule) a videa bylo mozne v uvodni titulkove casti lepe komentovat
+  (co za historickou postavu lidi vidi, kdo byl autorem a jaky byl jeho osud,
+  apod). Venku se to uz delalo hur, protoze lidi byli dal a muselo se hodne
+  kricet.
+* Trochu jsme se bali, ze bez zvuku (jakoze original zvuku ktery by vytvareli
+  herci) to nebude ono. Nicemu to ale nevadilo, s hudebnim podkresem, a v
+  podobe kratkeho filmu se to ztratilo.
+* Rozdeleni na 2 mista (nahravaci studio, projekce) byl dobry tah; kdyby
+  obe mista byly blizko sebe, lidi by se rusili
+* Na oziveni technikalii jsem si vyhradil ~2 hodiny pred zacatkem akce,
+  a bylo to malo. Veci sice fungovaly jak mely, ale kvuli silnym stenam
+  Vrtule a slabemu Wifi signalu jsme museli improvizovat. Do studia byl
+  priveden kabel a kvuli projekci jsme vyvesili jeden z wifi routeru do
+  okna (castecne byl problem i v tom, ze ikdyz na miste byly 4 ruzne pocitace,
+  zadny z nich nesel zaroven propojit s HDMI a ethernet kabelem; dongly
+  jsme meli, ale ruzne nefungovaly).
+* Barevne nastaveni projektoru je treba delat za idealnich podminek, tj.
+  nekdy kolem 22 hodiny. My jsme ho provedli mezi 20:30 a 21 hodinou a
+  promitane videa byly ze zacatku pekne prepalene (dusledek toho ze jsme
+  zbytecne moc vytahli kontrast a jas, aby slo neco na stene videt)
+* Sestrih z akce: [cast 1](https://youtu.be/_uVQq2S1n8M), [cast
+  2](https://youtu.be/M9oSTmewnBo)
+* Nahravani na kameru se realizovalo pres klasickou klavesnici, mezernikem.
+  Je to ale velke hamatne heblo, ktere bylo polozene na stolku a nekdy
+  po silnejsim zmacknuti klavesy se kamera mirne rozechvela (a zaznam pak
+  byl roztrepany); priste je treba dat klavesnici jinde a idealne ji nahradit
+  necim mensim
